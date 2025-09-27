@@ -63,7 +63,6 @@ const ProfilePublic = () => {
           </div>
         </div>
 
-        {/* Ubicación en mapa */}
         <div className="mt-4">
           <h5 className="fw-bold">Ubicación</h5>
           <iframe
