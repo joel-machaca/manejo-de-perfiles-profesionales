@@ -17,9 +17,6 @@ Este proyecto es un prototipo de plataforma web donde los profesionales pueden c
 ## Instalación y uso
 1. Crear una carpeta principal y dos subcarpetas(uno para el frontend y otro para el backend) y ejecutar estos los comandos en su respectiva subcarpeta
 
-mi-proyecto/
-├─ frontend/   ← todo el código del front
-├─ backend/    ← todo el código del back
 
 ejecutar el siguiente comando en la carpeta del frontend:
 ```bash
