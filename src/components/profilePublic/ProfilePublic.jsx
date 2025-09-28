@@ -9,7 +9,7 @@ const ProfilePublic = () => {
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        const res = await fetch(`http://localhost:4000/profiles/me/${id}`);
+        const res = await fetch(`${import.meta.env.VITE_API_URL}/profiles/me/${id}`);
         const data = await res.json();
         setProfesional(data);
       } catch (err) {
@@ -26,7 +26,7 @@ const ProfilePublic = () => {
       <div className="card shadow p-4">
         <div className="text-center">
           <img
-            src={profesional.foto_principal? `http://localhost:4000/${profesional.foto_principal}`:""}
+            src={profesional.foto_principal? `${import.meta.env.VITE_API_URL}/${profesional.foto_principal}`:""}
             alt={profesional.nombre}
             className="rounded-circle shadow"
             style={{ width: "150px", height: "150px", objectFit: "cover" }}
@@ -50,7 +50,7 @@ const ProfilePublic = () => {
             {profesional.galeria?.map((img, i) => (
               <img
                 key={i}
-                src={`http://localhost:4000/${img}`}
+                src={`${import.meta.env.VITE_API_URL}/${img}`}
                 alt={`galeria-${i}`}
                 className="rounded shadow-sm"
                 style={{

@@ -10,7 +10,7 @@ const PageMain = () => {
   useEffect(() => {
     const fetchProfiles = async () => {
       try {
-        const res = await fetch("http://localhost:4000/profiles/all");
+        const res = await fetch(`${import.meta.env.VITE_API_URL}/profiles/all`);
         const data = await res.json();
         setProfesionales(data);
       } catch (err) {
@@ -75,7 +75,7 @@ const PageMain = () => {
           <div key={index} className="col-md-4 mb-3">
             <div className="card  shadow-lg text-center p-3">
               <img
-                src={p.foto_principal ? `http://localhost:4000/${p.foto_principal}` : "/public/default.jpg"}
+                src={p.foto_principal ? `${import.meta.env.VITE_API_URL}/${p.foto_principal}` : "/public/default.jpg"}
                 alt={p.nombre}
                 className="rounded-circle mx-auto mb-3"
                 style={{ width: "100px", height: "100px", objectFit: "cover" }}

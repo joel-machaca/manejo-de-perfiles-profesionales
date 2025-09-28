@@ -30,7 +30,7 @@ const CreateProfile = () => {
     galeria.forEach((img) => formData.append("galeria", img));
 
     try {
-      const res = await fetch("http://localhost:4000/profiles/create", {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/profiles/create`, {
         method: "POST",
         body: formData,
       });

@@ -8,7 +8,7 @@ const Register = () => {
 
   const handleSignup = async () => {
     try {
-      const res = await fetch("http://localhost:4000/signup", {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/signup`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -88,3 +88,8 @@ const Register = () => {
     )
 }
 export default Register;
+
+
+
+modificar los fetch 
+

@@ -13,7 +13,7 @@ const AuthPage = () => {
   const handleLogin = async (e) => {
     e.preventDefault(); // evitar recargar la página
     try {
-      const res = await fetch("http://localhost:4000/login", {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
