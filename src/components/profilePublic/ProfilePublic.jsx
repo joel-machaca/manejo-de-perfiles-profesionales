@@ -26,7 +26,7 @@ const ProfilePublic = () => {
       <div className="card shadow p-4">
         <div className="text-center">
           <img
-            src={profesional.foto_principal? {profesional.foto_principal}:"/public/default.jpg"}
+            src={profesional.foto_principal? profesional.foto_principal:"/public/default.jpg"}
             alt={profesional.nombre}
             className="rounded-circle shadow"
             style={{ width: "150px", height: "150px", objectFit: "cover" }}
