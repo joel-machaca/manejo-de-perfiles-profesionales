@@ -21,6 +21,7 @@ const PageMain = () => {
   }, []);
 
   const filtrados = profesionales.filter((p) => {
+    console.log(p.foto_principal)
     return (
       p.nombre.toLowerCase().includes(busqueda.toLowerCase()) &&
       (ubicacion ? p.ciudad === ubicacion : true) &&
