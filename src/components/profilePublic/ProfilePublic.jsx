@@ -26,7 +26,7 @@ const ProfilePublic = () => {
       <div className="card shadow p-4">
         <div className="text-center">
           <img
-            src={profesional.foto_principal? `${import.meta.env.VITE_API_URL}/${profesional.foto_principal}`:""}
+            src={profesional.foto_principal? {profesional.foto_principal}:"/public/default.jpg"}
             alt={profesional.nombre}
             className="rounded-circle shadow"
             style={{ width: "150px", height: "150px", objectFit: "cover" }}
@@ -50,7 +50,7 @@ const ProfilePublic = () => {
             {profesional.galeria?.map((img, i) => (
               <img
                 key={i}
-                src={`${import.meta.env.VITE_API_URL}/${img}`}
+                src={img}
                 alt={`galeria-${i}`}
                 className="rounded shadow-sm"
                 style={{
