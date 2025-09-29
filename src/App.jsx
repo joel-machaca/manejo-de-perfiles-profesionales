@@ -7,6 +7,7 @@ import PageMain from './components/profiles_main/PageMain'
 import Register from './components/register/Register'
 import Navbar from './components/Navbar'
 import UserProvider from './Context/UserContext'
+import EditProfile from './components/editProfile/EditProfile'
 
 
 
@@ -24,6 +25,7 @@ function App() {
         <Route path={'/login'} element={<AuthPage/>}/>
         <Route path={'/register'} element={<Register/>}/>
         <Route path={'/createProfile'} element={<CreateProfile/>}/>
+        <Route path={'/editProfile'} element={<EditProfile/>}/>
         <Route path={'/profilePublic/:id'} element={<ProfilePublic/>}/>
       </Routes>
       </BrowserRouter>

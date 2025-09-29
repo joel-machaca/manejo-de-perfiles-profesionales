@@ -11,7 +11,7 @@ const AuthPage = () => {
   const {setUser}=useContext(UserContext)
 
   const handleLogin = async (e) => {
-    e.preventDefault(); // evitar recargar la página
+    e.preventDefault();
     try {
       const res = await fetch(`${import.meta.env.VITE_API_URL}/login`, {
         method: "POST",
@@ -26,7 +26,7 @@ const AuthPage = () => {
       if (!res.ok) {
         setMensaje(data.detail || "Error en login");
       } else {
-        setMensaje(data.message); // "bienvenido"
+        setMensaje(data.message); 
         setUser(data)
         console.log(data)
         navigate('/createProfile')

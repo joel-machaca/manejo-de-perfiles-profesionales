@@ -1,5 +1,6 @@
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import { UserContext } from "../../Context/UserContext";
+import { useNavigate } from "react-router-dom";
 
 const CreateProfile = () => {
   const [foto, setFoto] = useState(null);
@@ -10,6 +11,27 @@ const CreateProfile = () => {
   const [ciudad, setCiudad] = useState("");
   const [tarifa, setTarifa] = useState("");
   const { user } = useContext(UserContext);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const checkProfile = async () => {
+      if (!user) return;
+      try {
+        const res = await fetch(
+          `${import.meta.env.VITE_API_URL}/profiles/me?user_id=${user.id}`
+        );
+        if (res.ok) {
+          const data = await res.json();
+          if (data?.id) {
+            navigate("/");
+          }
+        }
+      } catch (error) {
+        console.error("Error al verificar perfil:", error);
+      }
+    };
+    checkProfile();
+  }, [user, navigate]);
 
   const handleGaleria = (e) => {
     setGaleria([...e.target.files]);
@@ -40,6 +62,7 @@ const CreateProfile = () => {
         alert(data.detail || "Error al crear perfil");
       } else {
         alert("Perfil creado correctamente");
+        navigate("/");
       }
     } catch {
       alert("Error de conexión");
@@ -48,7 +71,7 @@ const CreateProfile = () => {
 
   return (
     <div className="container mt-4">
-      <h3 className="text-primary mb-4">Crear / Editar Perfil</h3>
+      <h3 className="text-primary mb-4">Crear Perfil</h3>
       <form onSubmit={handleSubmit} className="card p-4 shadow-sm">
 
         <div className="mb-3">
@@ -134,6 +157,7 @@ const CreateProfile = () => {
             placeholder="Ejemplo: Lima"
           />
         </div>
+
         {(distrito || ciudad) && (
           <iframe
             title="mapa"
