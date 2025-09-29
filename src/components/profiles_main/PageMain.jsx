@@ -10,7 +10,7 @@ const PageMain = () => {
   useEffect(() => {
     const fetchProfiles = async () => {
       try {
-        const res = await fetch(`${import.meta.env.VITE_SUPABASE_URL}/profiles/all`);
+        const res = await fetch(`${import.meta.env.VITE_API_URL}/profiles/all`);
         const data = await res.json();
         setProfesionales(data);
       } catch (err) {
