@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 
 const PageMain = () => {
   const [busqueda, setBusqueda] = useState("");
-  const [ubicacion, setUbicacion] = useState("");
+  const [distrito, setDistrito] = useState("");
+  const [ciudad, setCiudad] = useState("");
   const [tarifa, setTarifa] = useState("");
   const [profesionales, setProfesionales] = useState([]);
 
@@ -21,10 +22,11 @@ const PageMain = () => {
   }, []);
 
   const filtrados = profesionales.filter((p) => {
-    console.log(p.foto_principal)
+    console.log(p.foto_principal);
     return (
       p.nombre.toLowerCase().includes(busqueda.toLowerCase()) &&
-      (ubicacion ? p.ciudad === ubicacion : true) &&
+      (ciudad ? p.ciudad === ciudad : true) &&
+      (distrito ? p.distrito === distrito : true) &&
       (tarifa ? p.tarifa <= parseInt(tarifa) : true)
     );
   });
@@ -35,8 +37,8 @@ const PageMain = () => {
         Listado de Profesionales
       </h2>
 
-      <div className="row mb-4">
-        <div className="col-md-4">
+      <div className="row mb-4 d-flex justify-content-center">
+        <div className="col-md-3">
           <input
             type="text"
             className="form-control"
@@ -45,22 +47,37 @@ const PageMain = () => {
             onChange={(e) => setBusqueda(e.target.value)}
           />
         </div>
-        <div className="col-md-4">
+        <div className="col-md-3">
           <select
-            className="form-select"
-            value={ubicacion}
-            onChange={(e) => setUbicacion(e.target.value)}
+            className="form-select mb-2"
+            value={ciudad}
+            onChange={(e) => setCiudad(e.target.value)}
           >
-            <option value="">Todas las ubicaciones</option>
+            <option value="">Todas las ciudades</option>
             {profesionales
               .map((p) => p.ciudad)
-              .filter((v, i, a) => a.indexOf(v) === i) // únicas
+              .filter((v, i, a) => a.indexOf(v) === i)
               .map((c, i) => (
                 <option key={i} value={c}>{c}</option>
               ))}
           </select>
+          </div>
+          <div className="col-md-3">
+          <select
+            className="form-select"
+            value={distrito}
+            onChange={(e) => setDistrito(e.target.value)}
+          >
+            <option value="">Todos los distritos</option>
+            {profesionales
+              .map((p) => p.distrito)
+              .filter((v, i, a) => a.indexOf(v) === i)
+              .map((d, i) => (
+                <option key={i} value={d}>{d}</option>
+              ))}
+          </select>
         </div>
-        <div className="col-md-4">
+        <div className="col-md-2">
           <input
             type="number"
             className="form-control"
