@@ -83,8 +83,8 @@ const PageMain = () => {
               />
               <div className="card-body">
                 <h5 className="card-title text-primary">{p.nombre}</h5>
-                <p className="card-text mb-1 ">{p.descripcion}</p>
-                <p className="card-text mb-1 fw-bold">{p.distrito} - {p.ciudad}</p>
+                <p className="card-text mb-1 "><i class="fas fa-briefcase"></i> {p.descripcion}</p>
+                <p className="card-text mb-1 fw-bold"><i class="fas fa-map-marker-alt"></i> {p.distrito} - {p.ciudad}</p>
                 <p className="card-text"><span className="fw-bold text-success">S/</span> {p.tarifa} / hora</p>
                 <Link to={`/profilePublic/${p.id}`} className="btn btn-primary w-100">Ver perfil</Link>
               </div>

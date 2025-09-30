@@ -26,16 +26,34 @@ const ProfilePublic = () => {
       <div className="card shadow p-4">
         <div className="text-center">
           <img
-            src={profesional.foto_principal? profesional.foto_principal:"/public/default.jpg"}
+            src={profesional.foto_principal ? profesional.foto_principal : "/public/default.jpg"}
             alt={profesional.nombre}
             className="rounded-circle shadow"
             style={{ width: "150px", height: "150px", objectFit: "cover" }}
           />
           <h3 className="mt-3 text-primary">{profesional.nombre}</h3>
-          <p className="text-muted mb-1">📍 {profesional.distrito} - {profesional.ciudad}</p>
-          <p className="fw-bold"><span className="fw-bold text-success">S/</span> {profesional.tarifa} / hora</p>
+          <p className="text-muted mb-1"><i class="fas fa-map-marker-alt"></i> {profesional.distrito} - {profesional.ciudad}</p>
+          <p className="fw-bold"><span className="fw-bold text-success">S/<i className="fas fa-money-bill-wave me-2"></i></span> {profesional.tarifa} / hora</p>
         </div>
 
+        <div className="text-center d-flex justify-content-center gap-5">
+          <a
+            href="https://wa.me/51929173857"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn btn-success m-1 d-inline-block"
+          >
+            <i className="fab fa-whatsapp me-2"></i> WhatsApp
+          </a>
+          <a
+            href="https://www.linkedin.com/in/joel-machaca"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn btn-primary m-1 d-inline-block"
+          >
+            <i className="fab fa-linkedin me-2"></i> LinkedIn
+          </a>
+        </div>
 
         <div className="mt-4">
           <h5 className="fw-bold">Descripción de servicios</h5>
@@ -72,9 +90,9 @@ const ProfilePublic = () => {
             loading="lazy"
             allowFullScreen
             src={`https://maps.google.com/maps?&q=${encodeURIComponent(
-             `${profesional.distrito}, ${profesional.ciudad}`
+              `${profesional.distrito}, ${profesional.ciudad}`
             )}&output=embed`}
-            
+
           ></iframe>
         </div>
       </div>

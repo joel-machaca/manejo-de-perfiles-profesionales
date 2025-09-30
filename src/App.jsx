@@ -1,5 +1,5 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import './App.css'
+
 import AuthPage from './components/login/AuthPage'
 import ProfilePublic from './components/profilePublic/ProfilePublic'
 import CreateProfile from './components/profiles/CreateProfile'
