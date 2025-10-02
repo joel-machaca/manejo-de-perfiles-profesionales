@@ -1,6 +1,6 @@
 import { useContext, useState, useEffect } from "react";
 import { UserContext } from "../../Context/UserContext";
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 
 const EditProfile = () => {
     const [foto, setFoto] = useState(null);
@@ -71,6 +71,7 @@ const EditProfile = () => {
             if (!res.ok) {
                 toast.warning(data.detail || "Error al actualizar perfil")
             } else {
+
                 toast.success("perfil actualizado perfectamente")
             }
         } catch {
