@@ -1,5 +1,6 @@
 import { useContext, useState, useEffect } from "react";
 import { UserContext } from "../../Context/UserContext";
+import { ToastContainer, toast } from 'react-toastify';
 
 const EditProfile = () => {
     const [foto, setFoto] = useState(null);
@@ -28,7 +29,6 @@ const EditProfile = () => {
                     setTarifa(data.tarifa || "");
                     setFoto(data.foto_principal || null);
                     setGaleria(data.galeria || []);
-                    console.log(data.galeria)
                 }
             } catch (error) {
                 console.error("Error al traer perfil:", error);
@@ -43,7 +43,7 @@ const EditProfile = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        if (!user) return alert("Debes estar logueado");
+        if (!user) return toast.error("debes estar logueado")
 
         const formData = new FormData();
         formData.append("user_id", user.id);
@@ -69,12 +69,12 @@ const EditProfile = () => {
             const data = await res.json();
 
             if (!res.ok) {
-                alert(data.detail || "Error al actualizar perfil");
+                toast.warning(data.detail || "Error al actualizar perfil")
             } else {
-                alert("Perfil actualizado correctamente");
+                toast.success("perfil actualizado perfectamente")
             }
         } catch {
-            alert("Error de conexión");
+            toast.error("error de conexion")
         }
     };
 

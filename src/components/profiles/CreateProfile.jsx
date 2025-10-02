@@ -1,6 +1,7 @@
 import { useContext, useState, useEffect } from "react";
 import { UserContext } from "../../Context/UserContext";
 import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
 
 const CreateProfile = () => {
   const [foto, setFoto] = useState(null);
@@ -27,7 +28,7 @@ const CreateProfile = () => {
           }
         }
       } catch (error) {
-        console.error("Error al verificar perfil:", error);
+        toast.error(error)
       }
     };
     checkProfile();
@@ -39,7 +40,7 @@ const CreateProfile = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!user) return alert("Debes estar logueado");
+    if (!user) return toast.warning("debes estar logueado");
 
     const formData = new FormData();
     formData.append("user_id", user.id);
@@ -59,13 +60,13 @@ const CreateProfile = () => {
 
       const data = await res.json();
       if (!res.ok) {
-        alert(data.detail || "Error al crear perfil");
+        toast.error(data.detail || "Error al crear perfil")
       } else {
-        alert("Perfil creado correctamente");
+        toast.success("Perfil creado correctamente")
         navigate("/");
       }
     } catch {
-      alert("Error de conexión");
+      toast.error("Error de conexion")
     }
   };
 
